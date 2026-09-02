@@ -6,13 +6,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table
+@Table(name = "address")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -43,7 +39,7 @@ public class Address {
     private String country;
 
     @NotBlank
-    @Size(min = 5, message = "Pincode name must be atleast 5 characters")
+    @Size(min = 5, message = "Pincode must be atleast 5 characters")
     private String pincode;
 
     @ManyToOne
