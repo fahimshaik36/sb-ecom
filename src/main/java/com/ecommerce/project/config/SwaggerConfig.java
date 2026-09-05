@@ -8,8 +8,11 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.tags.Tag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class SwaggerConfig {
@@ -38,6 +41,26 @@ public class SwaggerConfig {
                 .externalDocs(new ExternalDocumentation()
                         .description("Project Documentation")
                         .url("http://fahimshaik.com"))
+                .tags(List.of(
+                        new Tag()
+                                .name("Authentication APIs")
+                                .description("APIs for user authentication and account management"),
+                        new Tag()
+                                .name("Category APIs")
+                                .description("APIs for managing categories"),
+                        new Tag()
+                                .name("Product APIs")
+                                .description("APIs for managing products"),
+                        new Tag()
+                                .name("Cart APIs")
+                                .description("APIs for managing shopping carts"),
+                        new Tag()
+                                .name("Address APIs")
+                                .description("APIs for managing user addresses"),
+                        new Tag()
+                                .name("Order APIs")
+                                .description("APIs for placing and managing orders")
+                ))
                 .components(new Components()
                         .addSecuritySchemes("Bearer Authentication", bearerScheme))
                 .addSecurityItem(bearerRequirement);
