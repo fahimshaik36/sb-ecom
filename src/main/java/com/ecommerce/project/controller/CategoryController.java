@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Category APIs", description = "APIs for managing categories")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @Tag(name = "Category APIs", description = "APIs for managing categories")
     @GetMapping("/public/categories")
     public ResponseEntity<CategoryResponse> getAllCategories(
             @RequestParam (name = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required = false) Integer pageNumber,
@@ -34,7 +34,6 @@ public class CategoryController {
         return new ResponseEntity<>(categoryResponse, HttpStatus.OK);
     }
 
-    @Tag(name = "Category APIs", description = "APIs for managing categories")
     @Operation(summary = "Create categories", description = "API to create a new category")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Category is created successfully"),
