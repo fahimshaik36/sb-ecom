@@ -11,6 +11,7 @@ import com.ecommerce.project.security.request.SignupRequest;
 import com.ecommerce.project.security.response.MessageResponse;
 import com.ecommerce.project.security.response.UserInfoResponse;
 import com.ecommerce.project.security.services.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
+@Tag(name = "Authentication APIs", description = "APIs for user authentication and account management")
 public class AuthController {
 
     @Autowired
@@ -74,7 +76,7 @@ public class AuthController {
                 userDetails.getUsername(), roles, jwtCookie.toString());
 
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE,
-                jwtCookie.toString())
+                        jwtCookie.toString())
                 .body(response);
     }
 
@@ -131,7 +133,7 @@ public class AuthController {
     }
 
     @GetMapping("/username")
-    public String currentUserName(Authentication authentication){
+    public String currentUserName(Authentication authentication) {
         if (authentication != null)
             return authentication.getName();
         else
@@ -153,7 +155,7 @@ public class AuthController {
     }
 
     @PostMapping("/signout")
-    public ResponseEntity<?> signoutUser(){
+    public ResponseEntity<?> signoutUser() {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE,
                         cookie.toString())

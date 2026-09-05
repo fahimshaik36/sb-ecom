@@ -4,6 +4,7 @@ import com.ecommerce.project.model.User;
 import com.ecommerce.project.payload.AddressDTO;
 import com.ecommerce.project.service.AddressService;
 import com.ecommerce.project.util.AuthUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Address APIs", description = "APIs for managing user addresses")
 public class AddressController {
 
     @Autowired
@@ -50,7 +52,7 @@ public class AddressController {
 
     @PutMapping("/addresses/{addressId}")
     public ResponseEntity<AddressDTO> updateAddress(@PathVariable Long addressId,
-                                                        @RequestBody AddressDTO addressDTO){
+                                                    @RequestBody AddressDTO addressDTO){
         AddressDTO updatedAddress = addressService.updateAddress(addressId, addressDTO);
         return new ResponseEntity<>(updatedAddress, HttpStatus.OK);
     }
