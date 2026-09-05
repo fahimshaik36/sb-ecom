@@ -32,11 +32,9 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("E-Commerce REST API")
                         .version("1.0.0")
-                        .description("""
-                                Production-style e-commerce REST API built with Spring Boot.
-                                Provides authentication, product management, shopping carts,
-                                orders, payments, image uploads and role-based authorization.
-                                """)
+                        .description("Production-style e-commerce REST API built with Spring Boot. " +
+                                "Provides authentication, product management, shopping carts, " +
+                                "orders, payments, image uploads and role-based authorization.")
                         .license(new License().name("Apache 2.0").url("http://fahimshaik.com"))
                         .contact(new Contact()
                                 .name("Fahim Shaik")
